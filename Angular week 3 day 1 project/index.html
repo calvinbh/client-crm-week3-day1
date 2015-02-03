@@ -10,6 +10,7 @@
 <body>
     <div ng-controller="crmController">
         <input ng-model="obj.name" type="text" placeholder="Client Name" />
+        <input ng-model="obj.phone" type="text" placeholder="Client Phone">
         <input ng-model="obj.date" type="datetime-local" placeholder="Contact Date" />
         <input ng-model="obj.notes" type="text" placeholder="Notes" />
         <button class="btn btn-primary" ng-click="addClient();">Add Client</button>
@@ -19,21 +20,25 @@
                 <tr>
                     <td>Client Name</td>
                     <td>Date Contacted</td>
+                    <td>Phone</td>
                     <td>Notes</td>
                     <td>Follow Up</td>
                     <td>Change Status</td>
                     <td>Status</td>
+                    <td>Delete</td>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="client in clients">
                     <td>{{ client.name }}</td>
                     <td>{{ client.date }}</td>
+                    <td>{{ client.phone }}</td>
                     <td>{{ client.notes }}</td>
                     <td><button class="btn btn-warning">Follow Up</button></td>
                     <td><button class="btn btn-success" ng-click="isClosedBtn($index);">Change Status</button></td>
                     <td><span ng-show="client.isClosed"><img src="http://i.imgur.com/jENodmz.png"></span>
 <span ng-show="!client.isClosed"><img src="http://i.imgur.com/cjMQjY4.png"></span></td>
+                    <td><button class="btn btn-danger" ng-click="deleteClient($index);">Delete</button></td>
                 </tr>
             </tbody>
         </table>
