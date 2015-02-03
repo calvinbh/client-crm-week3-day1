@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="clients">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div ng-controller="crmController">
+        <input ng-model="obj.name" type="text" placeholder="Client Name" />
+        <input ng-model="obj.date" type="datetime-local" placeholder="Contact Date" />
+        <input ng-model="obj.notes" type="text" placeholder="Notes" />
+        <button class="btn btn-primary" ng-click="addClient();">Add Client</button>
+
+        <table class="table table-bordered tabled-condensed">
+            <thead>
+                <tr>
+                    <td>Client Name</td>
+                    <td>Date Contacted</td>
+                    <td>Notes</td>
+                    <td>Follow Up</td>
+                    <td>Change Status</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="client in clients">
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.date }}</td>
+                    <td>{{ client.notes }}</td>
+                    <td><button class="btn btn-warning">Follow Up</button></td>
+                    <td><button class="btn btn-success" ng-click="isClosedBtn($index);">Change Status</button></td>
+                    <td><span ng-show="client.isClosed"><img src="http://i.imgur.com/jENodmz.png"></span>
+<span ng-show="!client.isClosed"><img src="http://i.imgur.com/cjMQjY4.png"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
